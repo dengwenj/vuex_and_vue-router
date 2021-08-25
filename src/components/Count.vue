@@ -8,15 +8,15 @@
       <option value="2">2</option>
       <option value="3">3</option>
     </select>
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
-    <button @click="incrementOdd">当前求和为奇数再加</button>
-    <button @click="incrementWait">等一等在加</button>
+    <button @click="increment(n)">+</button>
+    <button @click="decrement(n)">-</button>
+    <button @click="incrementOdd(n)">当前求和为奇数再加</button>
+    <button @click="incrementWait(n)">等一等在加</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: '',
@@ -28,6 +28,7 @@ export default {
     }
   },
   computed: {
+    // mapState, mapGetters 返回值是对象
     // ...mapState({ sum: 'sum', school: 'school', address: 'address' }), // 对像写法
     ...mapState(['sum', 'school', 'address']), // 数组写法 这样写了就可以不用 写 this.$store.state.sum ......
 
@@ -39,18 +40,27 @@ export default {
   mounted() {},
   beforeDestroy() {},
   methods: {
-    increment() {
-      this.$store.commit('JIA', this.n)
-    },
-    decrement() {
-      this.$store.commit('JIAN', this.n)
-    },
-    incrementOdd() {
-      this.$store.dispatch('jiaOdd', this.n)
-    },
-    incrementWait() {
-      this.$store.dispatch('jiaWait', this.n)
-    },
+    // increment() {
+    //   this.$store.commit('JIA', this.n)
+    // },
+    // decrement() {
+    //   this.$store.commit('JIAN', this.n)
+    // },
+
+    // 简写形式
+    ...mapMutations({ increment: 'JIA', decrement: 'JIAN' }), // 对象写法
+    // ...mapMutations(['JIA', 'JIAN']), // 数组写法 就是方法名要和 commit 提交的名字一样
+
+    // incrementOdd() {
+    //   this.$store.dispatch('jiaOdd', this.n)
+    // },
+    // incrementWait() {
+    //   this.$store.dispatch('jiaWait', this.n)
+    // },
+
+    // 简写形式
+    ...mapActions({ incrementOdd: 'jiaOdd', incrementWait: 'jiaWait' }), // 对象写法
+    // ...mapActions(['jiaOdd', 'jiaWait']), // 数组写法
   },
 }
 </script>
