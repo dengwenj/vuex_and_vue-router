@@ -3,6 +3,7 @@
     <h2>当前求和为：{{ sum }}</h2>
     <h3>当前求和放大10倍为：{{ bigSum }}</h3>
     <h3>我在{{ address }}，读的{{ school }}</h3>
+    <h3>Person组件的人为：{{ person.length }}</h3>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -12,15 +13,20 @@
     <button @click="decrement(n)">-</button>
     <button @click="incrementOdd(n)">当前求和为奇数再加</button>
     <button @click="incrementWait(n)">等一等在加</button>
+    <hr />
+    <Person></Person>
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
+import Person from './Person'
 
 export default {
   name: '',
-  components: {},
+  components: {
+    Person,
+  },
   props: {},
   data() {
     return {
@@ -30,7 +36,7 @@ export default {
   computed: {
     // mapState, mapGetters 返回值是对象
     // ...mapState({ sum: 'sum', school: 'school', address: 'address' }), // 对像写法
-    ...mapState(['sum', 'school', 'address']), // 数组写法 这样写了就可以不用 写 this.$store.state.sum ......
+    ...mapState(['sum', 'school', 'address', 'person']), // 数组写法 这样写了就可以不用 写 this.$store.state.sum ......
 
     // ...mapGetters({ bigSum: 'bigSum' }), // 对象写法
     ...mapGetters(['bigSum']), // 数组写法  这样写了就可以不用 写 this.$store.getters.bigSum ......
