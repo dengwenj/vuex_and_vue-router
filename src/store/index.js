@@ -36,9 +36,17 @@ const state = {
   sum: 0, // 当前求和为
 }
 
+// 准备一个 getters 相当于组件中的 computed
+const getters = {
+  bigSum(state) {
+    return state.sum * 10
+  },
+}
+
 // 创建 state 并导出 state
 export default new Vuex.Store({
   state,
   actions,
   mutations,
+  getters,
 })
