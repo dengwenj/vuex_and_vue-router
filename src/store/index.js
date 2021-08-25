@@ -34,6 +34,8 @@ const mutations = {
 // 准备 state 对象——用户存储数据
 const state = {
   sum: 0, // 当前求和为
+  school: '开州中学',
+  address: '重庆',
 }
 
 // 准备一个 getters 相当于组件中的 computed
