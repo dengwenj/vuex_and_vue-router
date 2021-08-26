@@ -35,15 +35,21 @@ export default {
   },
   computed: {
     // mapState, mapGetters 返回值是对象
+    // sum() {
+    //   return this.$store.state.sum
+    // },
     // ...mapState({ sum: 'sum', school: 'school', address: 'address' }), // 对像写法
-    ...mapState(['sum', 'school', 'address', 'person']), // 数组写法 这样写了就可以不用 写 this.$store.state.sum ......
+    ...mapState('countOptions', ['sum', 'school', 'address']), // 数组写法 这样写了就可以不用 写 this.$store.state.sum ......
+    ...mapState('personOptions', ['person']), // 数组写法 这样写了就可以不用 写 this.$store.state.sum ......
 
     // ...mapGetters({ bigSum: 'bigSum' }), // 对象写法
-    ...mapGetters(['bigSum']), // 数组写法  这样写了就可以不用 写 this.$store.getters.bigSum ......
+    ...mapGetters('countOptions', ['bigSum']), // 数组写法  这样写了就可以不用 写 this.$store.getters.bigSum ......
   },
   watch: {},
   created() {},
-  mounted() {},
+  mounted() {
+    console.log(this.$store)
+  },
   beforeDestroy() {},
   methods: {
     // increment() {
@@ -54,7 +60,7 @@ export default {
     // },
 
     // 简写形式
-    ...mapMutations({ increment: 'JIA', decrement: 'JIAN' }), // 对象写法
+    ...mapMutations('countOptions', { increment: 'JIA', decrement: 'JIAN' }), // 对象写法
     // ...mapMutations(['JIA', 'JIAN']), // 数组写法 就是方法名要和 commit 提交的名字一样
 
     // incrementOdd() {
@@ -65,7 +71,10 @@ export default {
     // },
 
     // 简写形式
-    ...mapActions({ incrementOdd: 'jiaOdd', incrementWait: 'jiaWait' }), // 对象写法
+    ...mapActions('countOptions', {
+      incrementOdd: 'jiaOdd',
+      incrementWait: 'jiaWait',
+    }), // 对象写法
     // ...mapActions(['jiaOdd', 'jiaWait']), // 数组写法
   },
 }
