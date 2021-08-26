@@ -19,7 +19,12 @@ const router = new VueRouter({
       component: Home,
       children: [{
           path: 'news',
+          name: 'news',
           component: News,
+          beforeEnter: (to, from, next) => {
+            // 独享路由守卫 就是在这一个单独享用的路由守卫
+            // console.log(to, from)
+          },
         },
         {
           path: 'Message',
@@ -56,6 +61,7 @@ const router = new VueRouter({
       meta: {
         // 路由元信息 程序员自己写的一些信息可以放在这里面
         isAuth: true,
+        title: '关于',
       },
     },
   ],
@@ -75,7 +81,7 @@ router.beforeEach((to, from, next) => {
 // 初始化调用，每次路由切换之后调用
 router.afterEach((to, from) => {
   // console.log(to,from)
-  // document.title = '...' || '...'
+  // document.title = to.meta.title || '...'
 })
 
 export default router
