@@ -28,7 +28,8 @@ export default {
   watch: {},
   created() {},
   mounted() {
-    console.log(this)
+    console.log(this.$route)
+    console.log(this.$router)
   },
   beforeDestroy() {},
   methods: {},

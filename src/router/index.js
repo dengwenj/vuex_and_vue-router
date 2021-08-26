@@ -39,7 +39,7 @@ export default new VueRouter({
 
             // props 的第三种写法，值为函数，返回值必须为对象，函数的参数会接收 $route 这个对象，组件自己的路由信息
             props(route) {
-              console.log(route)
+              // console.log(route)
               return {
                 id: route.params.id,
                 title: route.params.title,

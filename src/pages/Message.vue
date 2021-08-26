@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'Message',
   components: {},
   props: {},
   data() {
@@ -70,7 +70,9 @@ export default {
   watch: {},
   created() {},
   mounted() {},
-  beforeDestroy() {},
+  beforeDestroy() {
+    console.log('Message组件被销毁了')
+  },
   methods: {},
 }
 </script>
