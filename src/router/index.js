@@ -5,6 +5,8 @@ import Vue from 'vue'
 
 import Home from '../pages/Home'
 import About from '../pages/About'
+import Message from '../pages/Message'
+import News from '../pages/News'
 
 // 使用插件
 Vue.use(VueRouter)
@@ -13,6 +15,15 @@ export default new VueRouter({
   routes: [{
       path: '/home',
       component: Home,
+      children: [{
+          path: 'news',
+          component: News,
+        },
+        {
+          path: 'Message',
+          component: Message,
+        },
+      ],
     },
     {
       path: '/about',
