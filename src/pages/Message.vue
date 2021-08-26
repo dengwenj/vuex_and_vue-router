@@ -1,10 +1,27 @@
 <template>
   <div class="">
     <ul>
-      <li><a href="/message1">message001</a>&nbsp;&nbsp;</li>
-      <li><a href="/message2">message002</a>&nbsp;&nbsp;</li>
-      <li><a href="/message/3">message003</a>&nbsp;&nbsp;</li>
+      <li v-for="item in detail" :key="item.id">
+        <!-- 跳转并携带 query 参数，to 的字符串写法 -->
+        <!-- <router-link
+          :to="`/home/message/detail?id=${item.id}&title=${item.title}`"
+          >{{ item.title }}</router-link
+        > -->
+
+        <!-- 跳转并携带 query 参数，to 的对象写法 -->
+        <router-link
+          :to="{
+            path: '/home/message/detail',
+            query: {
+              id: item.id,
+              title: item.title,
+            },
+          }"
+          >{{ item.title }}</router-link
+        >
+      </li>
     </ul>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -14,7 +31,22 @@ export default {
   components: {},
   props: {},
   data() {
-    return {}
+    return {
+      detail: [
+        {
+          id: '001',
+          title: '消息001',
+        },
+        {
+          id: '002',
+          title: '消息002',
+        },
+        {
+          id: '003',
+          title: '消息003',
+        },
+      ],
+    }
   },
   computed: {},
   watch: {},
