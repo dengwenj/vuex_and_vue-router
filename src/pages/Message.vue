@@ -71,9 +71,15 @@ export default {
   created() {},
   mounted() {},
   beforeDestroy() {
-    console.log('Message组件被销毁了')
+    // console.log('Message组件被销毁了')
   },
   methods: {},
+  activated() {
+    console.log('路由组件被激活的时候')
+  },
+  deactivated() {
+    console.log('路由组件失去激活的时候')
+  },
 }
 </script>
 

@@ -20,7 +20,7 @@
           >
         </li>
       </ul>
-      <keep-alive include="News">
+      <keep-alive :include="['News', 'Message']">
         <router-view></router-view>
       </keep-alive>
     </div>
