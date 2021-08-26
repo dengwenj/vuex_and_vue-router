@@ -12,8 +12,9 @@ import Detail from '../pages/Detail'
 // 使用插件
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const router = new VueRouter({
   routes: [{
+      name: 'home',
       path: '/home',
       component: Home,
       children: [{
@@ -52,9 +53,32 @@ export default new VueRouter({
     {
       path: '/about',
       component: About,
+      meta: {
+        // 路由元信息 程序员自己写的一些信息可以放在这里面
+        isAuth: true,
+      },
     },
   ],
 })
+
+// 全局前置守卫  在这里面可以做一些权限的逻辑 ，允不允许进人这个页面
+// 初始化调用，每次路由切换之前调用
+router.beforeEach((to, from, next) => {
+  // console.log(to,from)
+  // if (to.meta.isAuth) {
+  //   next()
+  // }
+  next()
+})
+
+// 全局后置守卫 里面可以改网页的标题 title
+// 初始化调用，每次路由切换之后调用
+router.afterEach((to, from) => {
+  // console.log(to,from)
+  // document.title = '...' || '...'
+})
+
+export default router
 
 /* 
   注意点
