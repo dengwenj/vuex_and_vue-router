@@ -27,6 +27,24 @@ export default new VueRouter({
             path: 'detail/:id/:title',
             name: 'detail',
             component: Detail,
+
+            // props第一种写法，值为对象，这种用的少
+            // props: {
+            //   a: 1,
+            //   b: 2,
+            // },
+
+            // props 的第二种写法，值为布尔值，若布尔值为真，就会把该路由组件收到的所有 params 参数，以 props 的形式传给 Detail 组件
+            // props: true,
+
+            // props 的第三种写法，值为函数，返回值必须为对象，函数的参数会接收 $route 这个对象，组件自己的路由信息
+            props(route) {
+              console.log(route)
+              return {
+                id: route.params.id,
+                title: route.params.title,
+              }
+            },
           }, ],
         },
       ],
