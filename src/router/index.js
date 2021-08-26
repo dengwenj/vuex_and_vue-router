@@ -3,8 +3,8 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 
-import Home from '../components/Home'
-import About from '../components/About'
+import Home from '../pages/Home'
+import About from '../pages/About'
 
 // 使用插件
 Vue.use(VueRouter)
@@ -20,3 +20,11 @@ export default new VueRouter({
     },
   ],
 })
+
+/* 
+  注意点
+     1 路由组件通常存放在 pages 文件夹，一般组件通常存放在 components 文件夹
+     2 通过切换，隐藏了的路由组件，默认是被销毁掉的，需要的时候在去挂载
+     3 每个组件都有自己的 $route 属性，里面存放着自己的路由信息
+     4 整个应用只有一个 router，可以通过组件的 $router 属性获取到
+*/
