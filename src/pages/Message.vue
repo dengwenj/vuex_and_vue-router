@@ -9,10 +9,28 @@
         > -->
 
         <!-- 跳转并携带 query 参数，to 的对象写法 -->
+        <!-- <router-link
+          :to="{
+            //path: '/home/message/detail',
+            name: 'detail',
+            query: {
+              id: item.id,
+              title: item.title,
+            },
+          }"
+          >{{ item.title }}</router-link
+        > -->
+
+        <!-- 跳转并携带 params 参数，to 的字符串写法 -->
+        <!-- <router-link :to="`/home/message/detail/${item.id}/${item.title}`">{{
+          item.title
+        }}</router-link> -->
+
+        <!-- 跳转并携带 params 参数，to 的对象写法 -->
         <router-link
           :to="{
-            path: '/home/message/detail',
-            query: {
+            name: 'detail',
+            params: {
               id: item.id,
               title: item.title,
             },

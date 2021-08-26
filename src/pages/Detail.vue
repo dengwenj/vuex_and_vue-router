@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h3>{{ $route.query.id }}</h3>
-    <h3>{{ $route.query.title }}</h3>
+    <!-- <h3>{{ $route.query.id }}</h3>
+    <h3>{{ $route.query.title }}</h3> -->
+    <h3>{{ $route.params.id }}</h3>
+    <h3>{{ $route.params.title }}</h3>
   </div>
 </template>
 
@@ -16,7 +18,9 @@ export default {
   computed: {},
   watch: {},
   created() {},
-  mounted() {},
+  mounted() {
+    console.log(this)
+  },
   beforeDestroy() {},
   methods: {},
 }
